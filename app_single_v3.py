@@ -185,6 +185,7 @@ state_latest = (
 # App
 # -----------------------------
 app = Dash(__name__, external_stylesheets=[FONT_URL], suppress_callback_exceptions=True)
+server = app.server  # para despliegue
 
 def stat_card(title, rows, note=None):
     """rows: list of (label, value)"""
