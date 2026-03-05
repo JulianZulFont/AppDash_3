@@ -2,7 +2,7 @@
 
 import pandas as pd
 import numpy as np
-from config import DATA_FILE, MESES_ES
+from config import DATA_FILE
 
 
 def load_data():
@@ -15,11 +15,6 @@ def load_data():
     # Top 100 por SizeRank
     if "SizeRank" in df.columns:
         df = df[df["SizeRank"] < 100].copy()
-
-    # Fecha en español
-    df["Fecha_ES"] = df["Date"].dt.month.map(
-        MESES_ES) + " " + df["Date"].dt.year.astype(str)
-    df["Year"] = df["Date"].dt.year
 
     return df
 
