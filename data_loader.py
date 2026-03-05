@@ -4,20 +4,10 @@ import pandas as pd
 import numpy as np
 from config import DATA_FILE
 
-
 def load_data():
     df = pd.read_csv(DATA_FILE)
-
-    # Normalización
     df["Date"] = pd.to_datetime(df["Date"], errors="coerce")
-    df = df.dropna(subset=["Date", "RegionName", "State", "RentIndex"]).copy()
-
-    # Top 100 por SizeRank
-    if "SizeRank" in df.columns:
-        df = df[df["SizeRank"] < 100].copy()
-
     return df
-
 
 def get_options(df):
     city_options = (
@@ -30,7 +20,6 @@ def get_options(df):
         for r in city_options.itertuples(index=False)
     ]
 
-
 # Carga inicial para exportar a otros módulos
 df = load_data()
 OPTIONS = get_options(df)
@@ -38,8 +27,6 @@ latest_date = df["Date"].max()
 df_latest = df[df["Date"] == latest_date].copy()
 
 # Pre-cálculos de crecimiento
-
-
 def calculate_growth(df):
     first_by_city = (
         df.sort_values("Date")
@@ -59,7 +46,6 @@ def calculate_growth(df):
                             growth["RentIndex_first"]) * 100.0
     growth["Label"] = growth["RegionName"] + ", " + growth["State"]
     return growth
-
 
 growth = calculate_growth(df)
 
