@@ -78,7 +78,8 @@ def add_census_data(df: pd.DataFrame) -> pd.DataFrame:
 
     all_census = pd.concat(dfs, ignore_index=True)
     all_census['MedianIncome'] = pd.to_numeric(
-        all_census['B19013_001E'], errors='coerce')
+        all_census['B19013_001E'], errors='coerce'
+    )
 
     # Parse NAME (e.g., "Houston city, Texas")
     all_census[['CityRaw', 'StateName']] = all_census['NAME'].str.split(
@@ -105,6 +106,9 @@ def add_census_data(df: pd.DataFrame) -> pd.DataFrame:
     # Drop the redundant City column
     df_merged = df_merged.drop(columns=['City'])
     df_merged = df_merged[df_merged['MedianIncome'].notna()]
+    df_merged['MedianIncome'] = df_merged['MedianIncome'] / 12 # Convert to monthly
+    # Calculate percentage of rent index
+    df_merged["RentIndexPct"] = df_merged["RentIndex"] / df_merged["MedianIncome"] * 100
 
     return df_merged
 
