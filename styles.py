@@ -28,9 +28,10 @@ STYLES = {
     "subtitle": {
         "color": COLORS["on-surface-variant"],
         "marginBottom": "1.25rem",
-        "fontSize": "1.05rem",
+        "fontSize": "1.1rem",
         "fontWeight": "400",
-        "maxWidth": "980px",
+        "maxWidth": "80%",
+        "lineHeight": "1.6",
     },
     "label": {
         "color": COLORS["on-background"],
@@ -58,5 +59,10 @@ STYLES = {
         "fontSize": "12px",
         "opacity": 0.8,
         "lineHeight": "1.4"
+    },
+    "dropdown": {
+        "maxWidth": "520px",
+        "marginTop": "1.5rem",
+        "marginBottom": "1rem",
     }
 }
