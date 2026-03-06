@@ -24,27 +24,11 @@ import callbacks.tables_callbacks
 
 app.layout = html.Div(
     [
-        html.H1("Rentas (ZORI) - Dashboard", style=STYLES["title"]),
+        html.H1("Más allá del titular: El mito de la renta inalcanzable", style=STYLES["title"]),
         html.P(
-            f"Datos por ciudad (Top 100). Última fecha: {latest_date.date()} "
-            f"• RentIndex en miles de USD",
+            "Contrario a la narrativa popular de una crisis de asequibilidad lineal y fuera de control, los datos demuestran que el mercado inmobiliario en ciudades clave de Norteamérica muestra una resiliencia inesperada. Si bien la pandemia generó un 'choque' en los precios, la relación renta-ingreso en ciudades como Miami o San Francisco ha comenzado a estabilizarse o incluso a mejorar respecto a la década pasada.",
             style=STYLES["subtitle"],
         ),
-
-        html.Div(
-            [
-                html.Label("Seleccionar Ciudad (para serie histórica)",
-                           style=STYLES["label"]),
-                dcc.Dropdown(
-                    id="city-dropdown",
-                    options=OPTIONS,
-                    value=OPTIONS[0]["value"] if OPTIONS else None,
-                    clearable=False, searchable=True,
-                ),
-            ],
-            style={"maxWidth": "520px", "marginBottom": "1rem"},
-        ),
-
         dcc.Tabs(
             id="tabs",
             value="tab-line",
@@ -57,7 +41,6 @@ app.layout = html.Div(
                 dcc.Tab(label="Tablas y modelos", value="tab-tables"),
             ],
         ),
-
         html.Div(id="tab-content", style={"marginTop": "1rem"}),
     ],
     style=STYLES["container"],
