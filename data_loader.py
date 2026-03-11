@@ -24,6 +24,7 @@ def get_options(df):
 df = load_data()
 OPTIONS = get_options(df)
 latest_date = df["Date"].max()
+earliest_date = df["Date"].min()
 df_latest = df[df["Date"] == latest_date].copy()
 
 # Pre-cálculos de crecimiento
