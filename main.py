@@ -2,7 +2,7 @@
 
 from dash import html, dcc, Input, Output
 from app import app, server
-from data_loader import OPTIONS, latest_date
+from data_loader import OPTIONS, latest_date, earliest_date
 from styles import STYLES
 import os
 
@@ -24,9 +24,14 @@ import callbacks.tables_callbacks
 
 app.layout = html.Div(
     [
-        html.H1("Más allá del titular: El mito de la renta inalcanzable", style=STYLES["title"]),
+        html.H1(
+            f"Evolución de Rentas en EE.UU. (Índice ZORI): {earliest_date.year} - {latest_date.year}",
+            style=STYLES["title"],
+        ),
         html.P(
-            "Contrario a la narrativa popular de una crisis de asequibilidad lineal y fuera de control, los datos demuestran que el mercado inmobiliario en ciudades clave de Norteamérica muestra una resiliencia inesperada. Si bien la pandemia generó un 'choque' en los precios, la relación renta-ingreso en ciudades como Miami o San Francisco ha comenzado a estabilizarse o incluso a mejorar respecto a la década pasada.",
+            f"El ZORI (Zillow Observed Rent Index) refleja el precio típico de los alquileres anunciados en el mercado. "
+            f"Este dashboard analiza su evolución entre {earliest_date.year} y {latest_date.year} "
+            f"para las 100 ciudades más pobladas de Estados Unidos (valores en miles de USD).",
             style=STYLES["subtitle"],
         ),
         dcc.Tabs(
