@@ -15,7 +15,7 @@ def layout_line_tab():
                     html.Div(
                         [
                             html.P(
-                                "Analiza la relación entre el costo de la renta y el ingreso mediano mensual. Esta comparativa permite visualizar si el poder adquisitivo local mantiene el ritmo del mercado inmobiliario o si la brecha de asequibilidad se está expandiendo.",
+                                "Analiza la tendencia del costo de alquiler (Índice ZORI) a lo largo del tiempo para la ciudad seleccionada. Como dimensión secundaria, se contrasta el crecimiento del precio (en miles de USD) frente al ingreso mediano mensual local.",
                                 style={**STYLES["p"], "fontSize": "1rem"},
                             ),
                             html.Div(
@@ -42,7 +42,7 @@ def layout_line_tab():
                     html.Div(
                         id="line-explain", style={"marginTop": "0.75rem", "color": COLORS["on-surface-variant"]}),
                     html.P(
-                        "El gráfico de porcentaje muestra el esfuerzo financiero requerido, midiendo qué proporción del ingreso se destina al alquiler. Un valor creciente indica una mayor presión sobre el presupuesto familiar.",
+                        "Complementando la tendencia de las rentas observada en el gráfico principal, la siguiente visualización expone qué proporción teórica de los ingresos cubriría un alquiler típico, midiendo el esfuerzo financiero en porcentaje a través del tiempo.",
                         style={
                             **STYLES["p"], "fontSize": "1rem", "marginTop": "2.5rem"
                         },
@@ -57,7 +57,7 @@ def layout_line_tab():
                         id="percentage-line-graph", style={"marginTop": "1rem"}
                     ),
                     html.P(
-                        "En algunas ciudades se evidencia un comportamiento en el que el porcentaje que constituye la renta en relación ingreso disminuye hasta 2021, pero luego de este año aumenta significativamente. Esto se puede deber a factores como la pandemia de COVID-19. Por otro lado, se observan ciudades en las que el porcentaje de renta sobre ingreso tiende a la baja, desmintiendo el ideal de que, de manera generalizada, las rentas han ido subiendo de manera constante en todas las ciudades a comparación del ingreso.",
+                        "Si bien el precio de alquiler ha presentado variaciones únicas en cada ciudad (con una notable volatilidad derivada de la pandemia de COVID-19 hacia 2021), al contrastar estos valores con el ingreso local se observa que no en todas partes el esfuerzo financiero aumenta. En algunas ciudades la proporción de renta frente al ingreso se ha contraído, lo que añade una perspectiva matizada a la evolución de los precios del índice ZORI.",
                         style={
                             **STYLES["p"], "fontSize": "1rem", "marginTop": "1.5rem",
                         },
