@@ -214,7 +214,7 @@ def update_state_table(state_value):
         )
         .sort_values("Renta_prom", ascending=False)
     )
-    st = st.rename(columns={"Crec_prom": "Crec_%_prom"})
+    st = st.rename(columns={"Crec_prom": "Crec_%_prom", "State": "Estado"})
 
     # format
     st_disp = st.copy()
@@ -253,6 +253,15 @@ def update_growth_table(state_value):
     for c in ["Rent_start", "Rent_last", "Growth_abs"]:
         disp[c] = disp[c].map(_fmt_money)
     disp["Growth_%"] = disp["Growth_%"].map(lambda v: f"{v:,.1f}%")
+
+    disp = disp.rename(columns={
+        "RegionName": "Ciudad",
+        "State": "Estado",
+        "Rent_start": "Renta_inicial",
+        "Rent_last": "Renta_final",
+        "Growth_abs": "Crec_abs",
+        "Growth_%": "Crec_%"
+    })
 
     note = "Top 20 por crecimiento % desde la primera fecha disponible. Útil para detectar mercados con mayor aceleración (ojo con bases pequeñas o series cortas)."
     return _dash_table(disp, page_size=10), html.P(note, style=STYLES["note"])

@@ -27,7 +27,7 @@ def update_heatmap_fig(_):
     )
     fig.update_traces(hovertemplate="<b>%{y}</b><br>Año: %{x}<br>Renta: %{z:,.2f}k<extra></extra>")
     fig = apply_dark_layout(fig, "Heatmap: renta promedio anual (Top 25 ciudades actuales)")
-    fig.update_layout(hovermode="closest")
+    fig.update_layout(hovermode="closest", coloraxis_colorbar_title="Renta (miles USD)")
     return fig
 
 

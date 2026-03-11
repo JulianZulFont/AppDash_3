@@ -49,23 +49,11 @@ def layout_tables_tab():
                                 clearable=False,
                             ),
                         ],
-                        style={"flex": "1"},
-                    ),
-                    html.Div(
-                        [
-                            html.Label("Ciudad para modelo",
-                                       style=STYLES["label"]),
-                            dcc.Dropdown(
-                                id="tables-city",
-                                options=OPTIONS,
-                                value=city_default,
-                                clearable=False,
-                            ),
-                        ],
-                        style={"flex": "2"},
+                        style={"flex": "1", "color": "black"},
                     ),
                 ],
-                style={"display": "flex", "gap": "1rem", "flexWrap": "wrap"},
+                style={"display": "flex", "gap": "1rem",
+                       "flexWrap": "wrap", "marginBottom": "2rem"},
             ),
 
             card(
@@ -99,6 +87,17 @@ def layout_tables_tab():
                     [
                         html.H3("Modelo lineal simple por ciudad",
                                 style=STYLES["h3"]),
+                        html.Div(
+                            [
+                                dcc.Dropdown(
+                                    id="tables-city",
+                                    options=OPTIONS,
+                                    value=city_default,
+                                    clearable=False,
+                                    style={"color": "black", "maxWidth": "350px", "marginBottom": "1rem"}
+                                ),
+                            ],
+                        ),
                         html.P(
                             "Ajusta una recta a la renta vs tiempo para estimar tendencia promedio. Es un modelo básico para describir dirección general, no para pronóstico fino.",
                             style=STYLES["p"],
