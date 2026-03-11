@@ -13,6 +13,7 @@ from components.layouts.scatter_tab import layout_scatter_tab
 from components.layouts.heatmap_tab import layout_heatmap_tab
 from components.layouts.map_tab import layout_map_tab
 from components.layouts.tables_tab import layout_tables_tab
+from components.layouts.conclusions_tab import layout_conclusions_tab
 
 # Import callbacks to register them
 import callbacks.line_callbacks
@@ -44,6 +45,7 @@ app.layout = html.Div(
                 dcc.Tab(label="Heatmap (Ciudad x Año)", value="tab-heatmap"),
                 dcc.Tab(label="Mapa por estado", value="tab-map"),
                 dcc.Tab(label="Tablas y modelos", value="tab-tables"),
+                dcc.Tab(label="Conclusiones", value="tab-conclusions"),
             ],
         ),
         html.Div(id="tab-content", style={"marginTop": "1rem"}),
@@ -66,6 +68,8 @@ def render_tab(tab):
         return layout_map_tab()
     if tab == "tab-tables":
         return layout_tables_tab()
+    if tab == "tab-conclusions":
+        return layout_conclusions_tab()
     return html.Div("Tab no reconocida", style=STYLES["card"])
 
 
