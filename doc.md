@@ -1,5 +1,3 @@
-
-
 # Entrega trabajo final
 Realizado por:
 - Mabby Dayana Puello Lopez
